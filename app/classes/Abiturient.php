@@ -30,7 +30,7 @@ class Abiturient
   }
   public function setLastName($lastName)
   {
-    $this->$lastName = $lastName;
+    $this->lastName = $lastName;
   }
   public function getGender()
   {
