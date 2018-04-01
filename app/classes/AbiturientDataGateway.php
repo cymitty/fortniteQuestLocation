@@ -6,14 +6,12 @@ namespace StudentList;
 class AbiturientDataGateway
 {
   private $DBH;
+
   public function __construct(\PDO $DBH)
   {
     $this->DBH = $DBH;
   }
-  public function getAbiturientById($id)
-  {
 
-  }
   /*
    * @return Abiturient[]
    */
@@ -24,6 +22,7 @@ class AbiturientDataGateway
     $result = $sth->fetchAll( \PDO::FETCH_CLASS, __NAMESPACE__ . '\\Abiturient' );// Двойной слэшь перед названием класса потому что php экранирует символы...
     return $result;
   }
+
   /*
    * @return true|false
    */
@@ -37,8 +36,26 @@ class AbiturientDataGateway
     $sth->bindValue( ':email', $abiturient->getEmail() );
     $sth->bindValue( ':points', $abiturient->getPoints() );
     $sth->bindValue( ':birthyear', $abiturient->getBirthYear() );
-    $data = $sth->execute();
-    return $data;
+    $result = $sth->execute();
+    return $result;
+  }
+
+  public function getAbiturientById($id)
+  {
+    $sth = $this->DBH->prepare('SELECT * from abiturient where id = :id ');
+    $sth->bindValue(':id', $id);
+    $sth->setFetchMode(\PDO::FETCH_ASSOC);
+    $sth->execute();
+    return $sth->fetch();
+  }
+
+  public function getAbiturientByEmail($email)
+  {
+    $sth = $this->DBH->prepare('SELECT * from abiturient where email = :email');
+    $sth->bindValue(':email', $email);
+    $sth->setFetchMode(\PDO::FETCH_ASSOC);
+    $sth->execute();
+    return $sth->fetch();
   }
 
 }
