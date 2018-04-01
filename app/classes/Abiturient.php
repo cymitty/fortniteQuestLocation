@@ -16,6 +16,16 @@ class Abiturient
   private $points;
   private $birthYear;
 
+  public function __construct($name, $lastName, $email, $groupNumber, $points, $birthYear)
+  {
+    $this->name = $name;
+    $this->lastName = $lastName;
+    $this->email = $email;
+    $this->groupNumber = $groupNumber;
+    $this->points = $points;
+    $this->birthYear = $birthYear;
+  }
+
   public function getName()
   {
     return $this->name;
