@@ -19,7 +19,7 @@ class AbiturientDataGateway
   {
     $sth = $this->DBH->query( ' SELECT * from abiturient ' );
 //    $sth->setFetchMode( \PDO::FETCH_CLASS, 'Abiturient' );
-    $result = $sth->fetchAll( \PDO::FETCH_CLASS, __NAMESPACE__ . '\\Abiturient' );// Двойной слэшь перед названием класса потому что php экранирует символы...
+    $result = $sth->fetchAll( \PDO::FETCH_CLASS|\PDO::FETCH_PROPS_LATE, __NAMESPACE__ . '\\Abiturient' );// Двойной слэшь перед названием класса потому что php экранирует символы...
     return $result;
   }
 
