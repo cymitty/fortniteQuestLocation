@@ -2,7 +2,7 @@
 define('ROOT', dirname(__FILE__));
 
 $config = parse_ini_file('config.ini');
-$dsn = $config['db'] . ':host=' . $config['host'] . ';dbname=' . $config['dbname'];
+$dsn = $config['db'] . ':host=' . $config['host'] . ';dbname=' . $config['dbname'] . ';charset=' . $config['charset'];
 
 try {
   $DBH = new PDO( $dsn, $config['user'], $config['password'] );
