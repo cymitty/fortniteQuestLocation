@@ -1,0 +1,13 @@
+{
+    "name": "amitty/student-list",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Andrew Mitty",
+            "email": "cy.andrewmitty@gmail.com"
+        }
+    ],
+    "require": {
+        "twbs/bootstrap": "4.0.0"
+    }
+}

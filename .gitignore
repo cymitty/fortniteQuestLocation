@@ -2,3 +2,5 @@
 log/
 provision/
 wp-cli.yml
+
+/vendor/

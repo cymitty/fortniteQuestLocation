@@ -13,6 +13,7 @@ try {
   die();
 }
 
+require_once ROOT . '/../vendor/autoload.php';
 
 //create mapper
 
