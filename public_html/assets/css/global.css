@@ -1,0 +1,26 @@
+body {
+  min-height: 100vh;
+}
+header.main-menu {
+  position: fixed;
+}
+main {
+  padding-top: 40px;
+}
+h1 {
+  margin: 15px 0;
+  text-align: center;
+  font-size: 21px;
+}
+
+div.abiturient-list {
+  margin: 0 auto;
+}
+
+.search {
+  margin: 10px 0;
+}
+
+.student-list a {
+  color: #1b1e21;
+}
