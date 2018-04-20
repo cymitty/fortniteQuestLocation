@@ -22,13 +22,8 @@ if ( !empty($notify) )
 }
 
 $pageNumber = intval( array_key_exists('page', $_GET) ? $_GET['page']: 1 );
-if ($pageNumber > 0)
-{
-  $offset = ($pageNumber - 1) * 10 ;
-  $abiturients = $abiturientGateway->getAbiturients(10, $offset);
-} else {
-  $abiturients = $abiturientGateway->getAbiturients(10, 0);
-}
+$offset = Helper::generateOffset($pageNumber, 10);
+$abiturients = $abiturientGateway->getAbiturients(10, $offset);
 
 $sort = array_key_exists('sort', $_GET) ? $_GET['sort'] : 'asc';
 $OrderNameLink = Helper::getSortingLinkByOrder('search', 'name', $sort);

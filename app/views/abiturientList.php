@@ -33,19 +33,64 @@
     <thead class="" style="background-color: #117a8b">
     <tr>
       <th style="<?php if ( isset($order) && $order == 'name' ) echo 'background-color: #4db6c8;' ?>">
-        <a href="<?= $OrderNameLink ?>">Имя</a><a href="<?= $SortNameLink ?>">[q]</a>
+        <a href="<?= $OrderNameLink ?>">Имя</a>
+        <a href="<?= $SortNameLink ?>">
+          <?php if ( isset($order) && $order == 'name' ): ?>
+            <?php if ($reverseSort == 'asc') : ?>
+              <img src="/assets/img/sort-up.ico" alt="" width="20px" height="20px">
+            <?php else : ?>
+              <img src="/assets/img/sort-down.ico" alt="" width="20px" height="20px">
+            <?php endif; ?>
+          <?php endif; ?>
+        </a>
       </th>
       <th style="<?php if ( isset($order) && $order == 'lastname' ) echo 'background-color: #4db6c8;' ?>">
-        <a href="<?= $OrderLastNameLink ?>">Фамилия</a><a href="<?= $SortLastNameLink ?>">[q]</a>
+        <a href="<?= $OrderLastNameLink ?>">Фамилия</a>
+        <a href="<?= $SortLastNameLink ?>">
+          <?php if ( isset($order) && $order == 'lastname' ): ?>
+            <?php if ($reverseSort == 'asc') : ?>
+              <img src="/assets/img/sort-up.ico" alt="" width="20px" height="20px">
+            <?php else : ?>
+              <img src="/assets/img/sort-down.ico" alt="" width="20px" height="20px">
+            <?php endif; ?>
+          <?php endif; ?>
+        </a>
       </th>
       <th style="<?php if ( isset($order) && $order == 'birthyear' ) echo 'background-color: #4db6c8;' ?>">
-        <a href="<?= $OrderBirthYearLink ?>">Год рождения</a><a href="<?= $SortBirthYearLink ?>">[q]</a>
+        <a href="<?= $OrderBirthYearLink ?>">Год рождения</a>
+        <a href="<?= $SortBirthYearLink ?>">
+          <?php if ( isset($order) && $order == 'birthyear' ): ?>
+            <?php if ($reverseSort == 'desc') : ?>
+              <img src="/assets/img/sort-up.ico" alt="" width="20px" height="20px">
+            <?php else : ?>
+              <img src="/assets/img/sort-down.ico" alt="" width="20px" height="20px">
+            <?php endif; ?>
+          <?php endif; ?>
+        </a>
       </th>
       <th style="<?php if ( isset($order) && $order == 'groupnumber' ) echo 'background-color: #4db6c8;' ?>">
-        <a href="<?= $OrderGroupNumberLink ?>">Номер группы</a><a href="<?= $SortGroupNumberLink ?>">[q]</a>
+        <a href="<?= $OrderGroupNumberLink ?>">Номер группы</a>
+        <a href="<?= $SortGroupNumberLink ?>">
+          <?php if ( isset($order) && $order == 'groupnumber' ): ?>
+            <?php if ($reverseSort == 'desc') : ?>
+              <img src="/assets/img/sort-up.ico" alt="" width="20px" height="20px">
+            <?php else : ?>
+              <img src="/assets/img/sort-down.ico" alt="" width="20px" height="20px">
+            <?php endif; ?>
+          <?php endif; ?>
+        </a>
       </th>
-      <th style="<?php if ( isset($order) && $order == 'points' || !isset($order) ) decho 'background-color: #4db6c8;' ?>">
-        <a href="<?= $OrderPointsLink ?>">ЕГЭ</a><a href="<?= $SortPointsLink ?>">[q]</a>
+      <th style="<?php if ( isset($order) && $order == 'points' || !isset($order) ) echo 'background-color: #4db6c8;' ?>">
+        <a href="<?= $OrderPointsLink ?>">ЕГЭ</a>
+        <a href="<?= $SortPointsLink ?>">
+          <?php if ( isset($order) && $order == 'points' || !isset($order) ): ?>
+            <?php if ($reverseSort == 'desc') : ?>
+              <img src="/assets/img/sort-up.ico" alt="" width="20px" height="20px">
+            <?php else : ?>
+              <img src="/assets/img/sort-down.ico" alt="" width="20px" height="20px">
+            <?php endif; ?>
+          <?php endif; ?>
+        </a>
       </th>
     </tr>
     </thead>

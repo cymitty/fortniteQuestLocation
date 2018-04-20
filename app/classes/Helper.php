@@ -55,6 +55,15 @@ class Helper
     return $link;
   }
 
+  public static function generateOffset($pageNumber, $recordsPerPage)
+  {
+    if  ($pageNumber > 0) {
+      $result = ($pageNumber - 1) * $recordsPerPage ;
+      return $result;
+    }
+    return 0;// Иначе показываем первую страницу
+  }
+
   /*
    * Возвращает количество абитуриентов по массиву полученному из getAbiturientsByQuery()
    */
