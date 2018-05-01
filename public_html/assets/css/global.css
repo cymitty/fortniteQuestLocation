@@ -2,7 +2,6 @@ body {
   min-height: 100vh;
 }
 header.main-menu {
-  position: fixed;
 }
 main {
   padding-top: 40px;
