@@ -15,9 +15,6 @@ try {
 
 require_once ROOT . '/../vendor/autoload.php';
 
-//create mapper
-
-
 //function my_autoload ($className) {
 //  // Получаем путь к файлу из имени класса
 //  $path = __DIR__ . '/models/' . $className . '.php';

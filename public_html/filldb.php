@@ -21,6 +21,7 @@ for ($i = 0; $i < 10; $i++)
   $abiturientGateway->addAbiturient($abiturient);
 }
 
+echo 'Успешно добавлены 10 случайных абитуриентов';
 //echo $faker->name . '<br>';
 //echo $faker->lastName . '<br>';
 //echo $faker->email . '<br>';

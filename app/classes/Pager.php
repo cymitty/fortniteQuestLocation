@@ -38,7 +38,7 @@ class Pager
   {
     $links = array();
     $totalPages = $this->getTotalPages();
-    for ($i = 1; $i < $totalPages; $i++) {
+    for ($i = 1; $i <= $totalPages; $i++) {
       $links[$i] = $this->getLinkForPage($i);
     }
 

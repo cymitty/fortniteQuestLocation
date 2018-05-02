@@ -108,7 +108,7 @@ class AbiturientDataGateway
     $sth = $this->DBH->query('SELECT COUNT(*) from abiturient');
     $sth->execute();
     $result = $sth->fetch();
-    return $result[0];
+    return (int)$result[0];
   }
   public function getAbiturientCountByQuery($search = '') {
     $sth = $this->DBH->prepare( " select COUNT(*) from abiturient WHERE CONCAT_WS('|', `name`, `lastName`, `points`, `birthYear`, `groupnumber`) 
