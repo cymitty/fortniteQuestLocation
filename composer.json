@@ -9,6 +9,7 @@
     ],
     "require": {
         "fzaninotto/faker": "^1.7",
-        "twbs/bootstrap": "4.0.0"
+        "twbs/bootstrap": "4.0.0",
+        "php": "^7.2.2"
     }
 }
