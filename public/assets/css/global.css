@@ -1,0 +1,204 @@
+@font-face {
+  font-family: BurbankBigCondensed-Black;
+  src: url(../fonts/BurbankBigCondensed-Black.otf);
+  /* //font-weight: bold; */
+}
+
+@font-face {
+  font-family: test;
+  src: url(../fonts/37683d0df7c9d6deae177eb06dbfa377.ttf);
+  /* //font-weight: bold; */
+}
+
+
+@font-face {
+  font-family: test1;
+  src: url(../fonts/55b8ce1f9a32bb0f83f14813eac0b7ca.woff);
+  /* //font-weight: bold; */
+}
+@font-face {
+  font-family: test2;
+  src: url(../fonts/214d95fc84167271307f6141587faf06.ttf);
+  /* //font-weight: bold; */
+}
+@font-face {
+  font-family: test3;
+  src: url(../fonts/834e3616d9e57f3f027e96394f43efa0.woff);
+  /* //font-weight: bold; */
+}
+@font-face {
+  font-family: test4;
+  src: url(../fonts/c5d323c99493dd76432d4f531b8cc329.woff);
+  /* //font-weight: bold; */
+}
+
+
+body {
+  min-height: 100vh;
+}
+header.main-menu {
+}
+main {
+  padding-top: 40px;
+}
+h1 {
+  margin: 15px 0;
+  text-align: center;
+  font-size: 21px;
+}
+
+div.abiturient-list {
+  margin: 0 auto;
+}
+
+.search {
+  margin: 10px 0;
+}
+
+.student-list a {
+  color: #1b1e21;
+}
+
+
+body {
+  margin: 0 auto;
+  background: url(../img/fortnite-background.jpg);
+  background-attachment: fixed;
+}
+
+.map {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  
+  /* margin: 0 auto; */
+}
+.map img {
+  /* max-width: 100%;
+  height: auto; */
+
+  width: 100%;
+  height: 100%;
+  object-fit: unset;
+}
+.map-pointer {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: red;
+  
+}
+
+.quests-toggle {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  z-index: 10;
+  margin-top: 24px;
+  padding: 10px 40px;
+  
+  
+
+  /* opacity: 0.9; */
+  border: 3px solid #0e244d;
+  border-top: none;
+  border-radius: 20px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  background: #344a73;
+  color: #ff0;
+  font-size: 30px;
+  font-family: test4;
+
+  -webkit-transform: translateX(-50%) translatey(-50%);
+  -moz-transform: translateX(-50%) translatey(-50%);
+  transform: translateX(-50%) translatey(-50%);
+
+  cursor: pointer;
+}
+
+.quests {
+   opacity: 0.9; 
+  /* background-color: #365081; */
+}
+
+
+.quests .quest-desc {
+  display: flex;
+  background-color: 6c91bb;
+}
+
+.quests .quest-desc > p {
+  margin: 0;
+  padding: 13px 12px;
+  color: #cedff1;
+  font-family: test4;
+  font-size: 22px;
+  text-transform: uppercase;
+}
+
+.quests .toggle {
+  /* display: block;
+  float: left;
+  margin-right: 3px; */
+  width: 33px;
+  /* min-height: 100%; */
+  border: 2px solid #c7dbf3;
+} 
+
+.quest-list {
+  margin: 5px 0;
+  padding-left: 0;
+}
+
+.quest-list:first-of-type {
+  margin-top: 0;  
+}
+
+.quest-list > header {
+  display: block;
+  padding: 30px 12px;
+  list-style: none;
+  background: #344a73;
+  font-family: test4;
+  font-size: 30px;
+  border: 3px solid #0e244d;
+  text-transform: uppercase;
+  color: #c9cfdb;
+}
+
+.quest-list > header:hover {
+  border: 3px solid #fff700;
+}
+
+.quest-list-item {
+  background-color: #365598;
+}
+
+.quest-list-item {
+  border: 3px solid #0e244d;
+  border-top: none;
+  font-size: 24px;
+  color: #8ba7d7;
+  /* opacity: 0.8; */
+}
+
+.quest-list-item > li {
+  margin-left: 30px;
+  padding: 16px 12px;
+}
+.quest-list-item:hover {
+  opacity: 1;
+  background-color: #3a66b8;
+}
+
+/* 
+.weekly > p {
+  padding: 13px 12px;
+  color: #cedff1;
+  font-family: test4;
+  font-size: 22px;
+  background-color: 6c91bb;
+  text-transform: uppercase;
+} */
+

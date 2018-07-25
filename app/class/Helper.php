@@ -1,10 +1,44 @@
 <?php
 
-namespace StudentList;
-
+namespace MyFortniteBundle;
+use MyFortniteBundle\Quest;
 // Вспомогательные static functions ( инициализировать класс не требуется )
 class Helper
 {
+
+    public static function buildQuestsTree(array &$quests)
+    {
+        $tree = [];
+        // Сортировка по полю неделя ( возрастание )
+        usort($quests, function (Quest $a, Quest $b) {
+            if ($a->getWeek() == $b->getWeek()) {
+                return 0;
+            }
+            return ($a->getWeek() < $b->getWeek()) ? -1 : 1;
+        });
+
+        foreach ($quests as $quest) {
+            $tree[] = [
+                'id'    => $quest->getId(),
+                'name'  => $quest->getName(),
+                'week'  => $quest->getWeek(),
+            ];
+        }
+
+        return $tree ?? false;
+    }
+
+    public static function isXMLHttpRequest()
+    {
+        if ($_SERVER['CONTENT_TYPE'] == 'application/json')
+            return true;
+    }
+
+    public static function getXMLHttpRequestData()
+    {
+        return file_get_contents('php://input');
+    }
+
   public static function getHeader()
   {
     require_once ROOT . '/views/templates/header.php';
@@ -16,7 +50,7 @@ class Helper
   }
   public static function get404()
   {
-    require_once ROOT . '/../public_html/404.html';
+      header("Location: http://{$_SERVER['HTTP_HOST']}/404.html");
     /* Убедиться, что код ниже не выполнится после перенаправления .*/
     die();
   }

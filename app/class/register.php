@@ -1,9 +1,9 @@
 <?php
 require_once __DIR__ . '/../app/bootstrap.php';
-require_once __DIR__ . '/../app/classes/abiturientDataGateway.php';
-require_once __DIR__ . '/../app/classes/abiturient.php';
-require_once __DIR__ . '/../app/classes/abiturientValidator.php';
-require_once __DIR__ . '/../app/classes/Helper.php';
+require_once __DIR__ . '/../app/class/AbiturientDataGateway.php';
+require_once __DIR__ . '/../app/class/Abiturient.php';
+require_once __DIR__ . '/../app/class/AbiturientValidator.php';
+require_once __DIR__ . '/../app/class/Helper.php';
 require_once ROOT . '/classes/Helper.php';
 $notifiesText = [
     'registered' => 'Вы успешно зарегистрировались в списке абитуриентов.',

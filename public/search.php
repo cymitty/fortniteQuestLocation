@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/../app/bootstrap.php';
-require_once __DIR__ . '/../app/classes/AbiturientDataGateway.php';
-require_once __DIR__ . '/../app/classes/Abiturient.php';
+require_once __DIR__ . '/../app/class/AbiturientDataGateway.php';
+require_once __DIR__ . '/../app/class/Abiturient.php';
 require_once ROOT . '/classes/Pager.php';
 require_once ROOT . '/classes/Helper.php';
 use StudentList\Helper as Helper;

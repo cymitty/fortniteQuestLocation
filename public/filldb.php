@@ -1,9 +1,9 @@
 <?php
 
 require_once __DIR__ . '/../app/bootstrap.php';
-require_once __DIR__ . '/../app/classes/AbiturientDataGateway.php';
-require_once __DIR__ . '/../app/classes/Abiturient.php';
-require_once __DIR__ . '/../app/classes/Helper.php';
+require_once __DIR__ . '/../app/class/AbiturientDataGateway.php';
+require_once __DIR__ . '/../app/class/Abiturient.php';
+require_once __DIR__ . '/../app/class/Helper.php';
 $abiturient = new \StudentList\Abiturient();
 $abiturientGateway = new \StudentList\AbiturientDataGateway($DBH);
 $faker = Faker\Factory::create();
