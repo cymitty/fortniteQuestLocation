@@ -7,7 +7,7 @@
             "email": "cy.andrewmitty@gmail.com"
         }
     ],
-    "require-dev": {
+    "require": {
         "fzaninotto/faker": "^1.7",
         "twbs/bootstrap": "4.0.0"
     }
