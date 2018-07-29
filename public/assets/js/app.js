@@ -1,28 +1,33 @@
 "use strict";
-var questId;
+var questId = null;
 const quests = document.querySelector('.quests');
 const questsToggle = document.querySelector('.quests-toggle');
 const questList = document.querySelectorAll('.quest-list');
-const questListItems = document.querySelectorAll('.quest-list-item');
+const questListItems = document.querySelectorAll('.quest-list-item > li');
+const addNewQuestLocationList = document.querySelectorAll('.add-new-quest-location');
 const mapPointer = document.querySelector(".map-pointer");
 const map = document.querySelector(".map");
+
 // map.style.backgroundColor = "red";
 // map.style.width  = "200px";
 // map.style.height = "200px";
 const garbageArea = document.querySelector(".xhr-response");
 
-questsToggle.addEventListener("click", element => {
- if (quests.hidden == true) {
-   quests.hidden = false;
-   return;
- }
- quests.hidden = true;
-});
+if (questsToggle) {
+  questsToggle.addEventListener("click", element => {
+   if (quests.hidden == true) {
+     quests.hidden = false;
+     return;
+   }
+   quests.hidden = true;
+  });
+}
 
 
 
 
-// Add new pointer
+// Добавить координаты метки для квеста кликнув по карте
+// ( преждевременно нужно выбрать квест для метки кликнув по квесту )
 map.addEventListener("click", function (e) {
   let x = e.offsetX==undefined?e.layerX:e.offsetX;
   let y = e.offsetY==undefined?e.layerY:e.offsetY;
@@ -45,11 +50,11 @@ map.addEventListener("click", function (e) {
       if (xhr.status != 200) {
         alert(xhr.status + ': ' + xhr.statusText);
       } else {
-        garbageArea.innerHTML = xhr.responseText;
+        // garbageArea.innerHTML = xhr.responseText;
         let response = JSON.parse(xhr.responseText);
         if (response.status != 1) { console.log('Координаты не добавлены'); return; }
-        console.log('Были присвоены координаты к квесту');
-        return;
+        console.log('Спасибо что открыли глаза на это место с сокровищами ' + questId);
+        window.questId = null;
       }
     }
   }
@@ -79,11 +84,10 @@ questList.forEach( element => {
   element.addEventListener("click", e => {
     let questListChildrens = Array.from(element.children);
       questListChildrens.forEach(function (item) {
-        if (item.classList.contains('quest-list-item') && item.hidden == true) {
-          item.hidden = false;
-          return;
+        if (item.classList.contains('quest-list-item') && item.classList.contains('hidden')) {
+          item.classList.remove('hidden');
         } else {
-          item.hidden = true;
+          item.classList.add('hidden');
         }
       });
   });  
@@ -94,7 +98,6 @@ questList.forEach( element => {
 questListItems.forEach(element => {
   element.addEventListener("click", e => {
     let questID = element.getAttribute("data-id");
-    questId = questID;
     let xhr = new XMLHttpRequest();
     xhr.open('POST', '/index', true);
     xhr.setRequestHeader('Content-Type', 'application/json');
@@ -113,15 +116,25 @@ questListItems.forEach(element => {
           return;
         }
         console.log('Извините, информация о метке на данный момент отсутствует');
+        updateMapPointerCoordinates(0, 0);
       }  
     }
      quests.hidden = true;
   });
 });
 
+// Выбрать квест для предложения координат метки
+addNewQuestLocationList.forEach(element => {
+  element.addEventListener("click", e => {
+    questId = element.getAttribute('data-id');
+    quests.hidden = true;
+    console.log('Сработал event для добавления координат questId = ' + window.questId);
+  });
+});
+
 document.addEventListener("keyup", (e) => {
   if (e.keyCode == 27) { // escape key maps to keycode `27`
-     // <DO YOUR WORK HERE>
+    if (quests)
      quests.hidden = true;
   }
 });

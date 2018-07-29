@@ -11,9 +11,8 @@ $pointerGateway = new \MyFortniteBundle\PointerDataGateway($DBH);
 
 if (Helper::isXMLHttpRequest())
 {
-    $requestArr = json_decode(file_get_contents('php://input'));
-    $pointerId = (int) $requestArr->id ?? false;
-
+    $request = json_decode(file_get_contents('php://input'));
+    $pointerId = (int) $request->id ?? false;
     $pointer = $pointerGateway->getPointerById($pointerId);
     if (!$pointer)
     {
@@ -33,5 +32,4 @@ $quests = $questGateway->getQuestsBySeason(5);
 
 $questsTree = Helper::buildQuestsTree($quests);
 
-echo '<h1>Сработал indexController. Ты на главной.</h1>';
 include_once VIEW . '/index.php';

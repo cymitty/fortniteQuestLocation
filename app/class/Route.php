@@ -6,27 +6,32 @@ use MyFortniteBundle\Helper as Helper;
 
 class Route
 {
-  private $requestUrl;
+    public $requestUrl;
+  private $requestPath;
+  private $requestParameters;
   private $routes = [
       'index' => 'indexController.php',
       'test' => 'testController.php',
       'register' => 'registerController.php',
-      'newpointer' => 'newPointerController.php',
+      'newpointer' => 'newOfferingPointerController.php',
       'xhr' => 'xhr.php',
+      'admin' => 'adminController.php'
   ];
 
   public function __construct()
   {
-//    $requestUrl = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-    $requestUrl = $_SERVER['REQUEST_URI'];
-    $splittedRequest = explode('/', $requestUrl);
-    $this->requestUrl = $splittedRequest[1];
+      global $requestUrl;
+      $this->requestUrl = $requestUrl;
+      var_dump($requestUrl);
+      $this->requestPath = $requestUrl['path'];
+//      parse_str($requestUrl['query'], $this->requestParameters);
   }
 
   public function run()
   {
       global $DBH;// Иначе DBH в контроллере будет null
-    if ($this->requestUrl == "") {
+      global $requestUrl;
+    if ($this->requestPath == "") {
         //Главная страница
       require_once ROOT . '/app/controller/indexController.php';
       exit;
@@ -34,8 +39,7 @@ class Route
     // Иначе ищем страницу в массиве $routes
     foreach ($this->routes as $key => $route)
     {
-        //echo "key: {$key}, req_url: {$this->requestUrl}, result: " . strpos($key, $this->requestUrl) ."<br>";
-      if ( strpos( $key, $this->requestUrl ) !== false ) {
+      if ( mb_strpos($this->requestPath, $key ) !== false ) {
          include ROOT . '/app/controller/' . $route;
         exit;
       }

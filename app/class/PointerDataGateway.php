@@ -20,15 +20,15 @@ class PointerDataGateway
         $this->DBH = $DBH;
     }
 
-    public function addPointer($x, $y, Quest $quest)
+    public function addPointer(Pointer $pointer)
     {
         $sth = $this->DBH->prepare("INSERT INTO Pointer (
           x, y, quest_id) 
           VALUES (:x, :y, :quest_id)
         ");
-        $sth->bindValue(':x', $x);
-        $sth->bindValue(':y', $y);
-        $sth->bindValue(':quest_id', $quest->getId());
+        $sth->bindValue(':x', $pointer->getX());
+        $sth->bindValue(':y', $pointer->getY());
+        $sth->bindValue(':quest_id', $pointer->getQuestId());
         return $sth->execute();
     }
 
@@ -44,6 +44,35 @@ class PointerDataGateway
         return $sth->execute();
     }
 
+    public function addOfferingPointerById($x, $y, $questId)
+    {
+        $sth = $this->DBH->prepare("INSERT INTO location_offers (
+          x, y, quest_id) 
+          VALUES (:x, :y, :quest_id)
+        ");
+        $sth->bindValue(':x', $x);
+        $sth->bindValue(':y', $y);
+        $sth->bindValue(':quest_id', $questId);
+        return $sth->execute();
+    }
+
+
+//    Обновляет Pointer если нету - создаёт новый
+    public function updatePointer(Pointer $pointer)
+    {
+        $existingPointer = $this->getPointerById($pointer->getQuestId());
+        if ($existingPointer)
+        {
+            $sth = $this->DBH->prepare('UPDATE pointer SET x = :x, y = :y, quest_id = :quest_id WHERE quest_id = :quest_id');
+            $sth->bindValue('id', $pointer->getId());
+            $sth->bindValue('x', $pointer->getX());
+            $sth->bindValue('y', $pointer->getY());
+            $sth->bindValue('quest_id', $pointer->getQuestId());
+            return $sth->execute();
+        }
+        return $this->addPointer($pointer);
+    }
+
     public function removePointer(Quest $quest)
     {
         $sth = $this->DBH->prepare("DELETE FROM Pointer WHERE id = :id");
@@ -51,10 +80,17 @@ class PointerDataGateway
         return $sth->execute();
     }
 
-    public function removePointerById($questId)
+    public function removePointerById($id)
     {
         $sth = $this->DBH->prepare("DELETE FROM Pointer WHERE id = :id");
-        $sth->bindValue('id', $questId);
+        $sth->bindValue('id', $id);
+        return $sth->execute();
+    }
+
+    public function removeOfferingPointerById($id)
+    {
+        $sth = $this->DBH->prepare("DELETE FROM location_offers WHERE id = :id");
+        $sth->bindValue('id', $id);
         return $sth->execute();
     }
 
@@ -78,6 +114,15 @@ class PointerDataGateway
         $sth->setFetchMode($this::FETCH_MODE, $this::CLASS_NAME);
         $sth->execute();
         return $sth->fetch();
+    }
+
+    // Вывод всех предложенных меток
+    public function getAllLocationOffers()
+    {
+        $sth = $this->DBH->prepare('SELECT o.*, quest.name as quest_name from location_offers o JOIN quest ON o.quest_id = quest.id');
+        $sth->setFetchMode($this::FETCH_MODE, $this::CLASS_NAME);
+        $sth->execute();
+        return $sth->fetchAll();
     }
 
 }

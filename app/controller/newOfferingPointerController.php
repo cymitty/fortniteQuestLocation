@@ -10,7 +10,7 @@ if (Helper::isXMLHttpRequest())
     $response = [];
     $request = json_decode(file_get_contents("php://input"));
     $questId = (int) $request->id ?? false;
-    $pointer = $pointerGateway->addPointerById($request->x, $request->y, $questId);
+    $pointer = $pointerGateway->addOfferingPointerById($request->x, $request->y, $questId);
 
     if (!$pointer) {
 

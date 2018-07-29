@@ -15,11 +15,14 @@ class Pointer
     private $x;// В процентах т.к карта на которой он будет,
     private $y;// может иметь разный размер в зависимости от экрана устройства.
     private $quest_id;
+    private $quest_name;
 
-    public function __construct($x = "", $y = "")
+    public function __construct($id = "", $x = "", $y = "", $quest_id = "")
     {
+        $this->id = $id;
         $this->x    = $x;
         $this->y    = $y;
+        $this->quest_id = $quest_id;
     }
 
     public function __toString()
@@ -67,5 +70,36 @@ class Pointer
         $this->y = $y;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getQuestId()
+    {
+        return $this->quest_id;
+    }
+
+    /**
+     * @param mixed $quest_id
+     */
+    public function setQuestId($quest_id): void
+    {
+        $this->quest_id = $quest_id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getQuestName()
+    {
+        return $this->quest_name;
+    }
+
+    /**
+     * @param mixed $quest_name
+     */
+    public function setQuestName($quest_name): void
+    {
+        $this->quest_name = $quest_name;
+    }
 
 }

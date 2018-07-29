@@ -70,13 +70,8 @@ body {
   position: fixed;
   width: 100%;
   height: 100%;
-  
-  /* margin: 0 auto; */
 }
 .map img {
-  /* max-width: 100%;
-  height: auto; */
-
   width: 100%;
   height: 100%;
   object-fit: unset;
@@ -96,8 +91,6 @@ body {
   z-index: 10;
   margin-top: 24px;
   padding: 10px 40px;
-  
-  
 
   /* opacity: 0.9; */
   border: 3px solid #0e244d;
@@ -116,18 +109,13 @@ body {
 
   cursor: pointer;
 }
-
 .quests {
-   opacity: 0.9; 
-  /* background-color: #365081; */
+   opacity: 0.9;
 }
-
-
 .quests .quest-desc {
   display: flex;
   background-color: 6c91bb;
 }
-
 .quests .quest-desc > p {
   margin: 0;
   padding: 13px 12px;
@@ -136,25 +124,17 @@ body {
   font-size: 22px;
   text-transform: uppercase;
 }
-
 .quests .toggle {
-  /* display: block;
-  float: left;
-  margin-right: 3px; */
   width: 33px;
-  /* min-height: 100%; */
   border: 2px solid #c7dbf3;
-} 
-
+}
 .quest-list {
   margin: 5px 0;
   padding-left: 0;
 }
-
 .quest-list:first-of-type {
   margin-top: 0;  
 }
-
 .quest-list > header {
   display: block;
   padding: 30px 12px;
@@ -166,39 +146,82 @@ body {
   text-transform: uppercase;
   color: #c9cfdb;
 }
-
 .quest-list > header:hover {
   border: 3px solid #fff700;
 }
-
 .quest-list-item {
-  background-color: #365598;
-}
-
-.quest-list-item {
+  display: flex;
+  justify-content: space-between;
   border: 3px solid #0e244d;
   border-top: none;
+  background-color: #365598;
   font-size: 24px;
   color: #8ba7d7;
   /* opacity: 0.8; */
 }
-
 .quest-list-item > li {
   margin-left: 30px;
   padding: 16px 12px;
+  cursor: pointer;
 }
 .quest-list-item:hover {
   opacity: 1;
   background-color: #3a66b8;
 }
+.quest-list-item > div {
+  padding: 16px 12px;
+  cursor: pointer;
+}
+/* Список предложенных локаций для квестов */
 
-/* 
-.weekly > p {
-  padding: 13px 12px;
-  color: #cedff1;
-  font-family: test4;
+.location-offering {
+  position: relative;
+  border: 4px solid #344a73;
+  cursor: pointer;
+}
+
+.location-offering > div {
+  padding: 10px;
+  background: #344a73;
+  text-align: center;
+  color: #fff;
   font-size: 22px;
-  background-color: 6c91bb;
-  text-transform: uppercase;
-} */
+  font-family: test4;
+}
+
+.location-offering > li {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 15px;
+  opacity: 0.8;
+  background: aliceblue;
+  font-family: test4;
+  font-size: 20px;
+  list-style-type: none;
+}
+
+.location-offering > li:nth-child(2n) {
+  background: #c6c8ca;
+}
+
+.location-offering > li:hover {
+  background: #344a73;
+  color: #fff700;
+  cursor: pointer;
+}
+
+.actions > .agree:hover {
+  color: green;
+}
+
+.actions > .degree:hover {
+  color: red;
+}
+/*########################*/
+
+/* Кастомные */
+
+.hidden {
+  display: none;
+}
 
