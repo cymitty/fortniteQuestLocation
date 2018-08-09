@@ -1,5 +1,6 @@
 <?php
-use MyFortniteBundle\{Quest,Helper};
+use MyFortniteBundle\Entity\{Quest,Pointer};
+
 $questGateway   = new MyFortniteBundle\QuestDataGateway($DBH);
 $pointerGateway = new \MyFortniteBundle\PointerDataGateway($DBH);
 //add new Quest

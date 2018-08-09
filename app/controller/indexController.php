@@ -5,7 +5,8 @@
  * Date: 7/16/2018
  * Time: 7:21 PM
  */
-use MyFortniteBundle\{Quest,Helper};
+use MyFortniteBundle\Entity\{Quest,Pointer};
+
 $questGateway   = new MyFortniteBundle\QuestDataGateway($DBH);
 $pointerGateway = new \MyFortniteBundle\PointerDataGateway($DBH);
 

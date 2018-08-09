@@ -6,7 +6,7 @@
  * Time: 5:12 PM
  */
 
-namespace MyFortniteBundle;
+namespace MyFortniteBundle\Entity;
 
 
 class Quest

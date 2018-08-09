@@ -1,10 +1,11 @@
 <?php
-use MyFortniteBundle\{Quest,Pointer,Helper};
+use MyFortniteBundle\Entity\{Quest,Pointer};
+use MyFortniteBundle\Helper;
 
 $questGateway = new MyFortniteBundle\QuestDataGateway($DBH);
 $pointerGateway = new \MyFortniteBundle\PointerDataGateway($DBH);
 
-var_dump($requestUrl);
+//var_dump($requestUrl);
 
 if (Helper::isXMLHttpRequest())
 {

@@ -6,7 +6,7 @@
  * Time: 12:13 PM
  */
 
-namespace MyFortniteBundle;
+namespace MyFortniteBundle\Entity;
 
 
 class Pointer

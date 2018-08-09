@@ -2,7 +2,7 @@
 
 namespace MyFortniteBundle;
 
-use MyFortniteBundle\Helper as Helper;
+use \MyFortniteBundle\Helper as Helper;
 
 class Route
 {
@@ -22,16 +22,15 @@ class Route
   {
       global $requestUrl;
       $this->requestUrl = $requestUrl;
-      var_dump($requestUrl);
       $this->requestPath = $requestUrl['path'];
-//      parse_str($requestUrl['query'], $this->requestParameters);
+      parse_str($requestUrl['query'], $this->requestParameters);
   }
 
   public function run()
   {
       global $DBH;// Иначе DBH в контроллере будет null
       global $requestUrl;
-    if ($this->requestPath == "") {
+    if ($this->requestPath == "/") {
         //Главная страница
       require_once ROOT . '/app/controller/indexController.php';
       exit;
