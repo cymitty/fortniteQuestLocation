@@ -8,11 +8,12 @@
 
 namespace MyFortniteBundle;
 
+use MyFortniteBundle\Entity\Quest as Quest;
 
 class QuestDataGateway
 {
     const FETCH_MODE = 8|1048576;
-    const CLASS_NAME = "MyFortniteBundle\Quest";
+    const CLASS_NAME = "MyFortniteBundle\Entity\Quest";
     private $DBH;
 
     public function __construct(\PDO $DBH) {
@@ -75,10 +76,9 @@ class QuestDataGateway
     {
         $sth = $this->DBH->prepare("SELECT * from Quest where season = :season");
         $sth->bindValue(":season", $season);
-        $sth->setFetchMode(\PDO::FETCH_CLASS|\PDO::FETCH_PROPS_LATE, __NAMESPACE__ . '\\Quest' );
+        $sth->setFetchMode($this::FETCH_MODE, $this::CLASS_NAME);
         $sth->execute();
-        $result = $sth->fetchAll();
-        return $result;
+        return $sth->fetchAll();
     }
 
 }

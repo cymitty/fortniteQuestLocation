@@ -18,13 +18,13 @@
 
 <div class="location-offering">
   <div>
-    <?php if (empty($locationOffers)): ?>
+    <?php if (empty($data['locationOffers'])): ?>
       Нет предложений
     <?php else: ?>
       Предложения меток для квеста
     <?php endif; ?>
   </div>
-    <?php foreach ($locationOffers as $locationOffer): ?>
+    <?php foreach ($data['locationOffers'] as $locationOffer): ?>
         <li class="location-offering-element"
             data-pointer-id="<?= $locationOffer->getId(); ?>"
             data-x="<?= $locationOffer->getX(); ?>"

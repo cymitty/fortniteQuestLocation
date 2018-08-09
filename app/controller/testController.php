@@ -1,23 +1,27 @@
 <?php
+use MyFortniteBundle\{Controller,Registry,Helper};
 use MyFortniteBundle\Entity\{Quest,Pointer};
 
-$questGateway   = new MyFortniteBundle\QuestDataGateway($DBH);
-$pointerGateway = new \MyFortniteBundle\PointerDataGateway($DBH);
-//add new Quest
-//$quest = new \MyFortniteBundle\Quest(
-//    'new',
-//    'something',
-//    2,
-//    5,
-//    '2plus2');
-//if ($questGateway->addQuest($quest)) echo "Был добавлен новый квест\n";//ad
+class testController extends Controller
+{
+    public function index()
+    {
+        $questGateway   = new MyFortniteBundle\QuestDataGateway(Registry::instance()->getData('DBH'));
+        $pointerGateway = new \MyFortniteBundle\PointerDataGateway(Registry::instance()->getData('DBH'));
+        // add new Quest
+        //$quest = new \MyFortniteBundle\Quest(
+        //    'new',
+        //    'something',
+        //    2,
+        //    5,
+        //    '2plus2');
+        //if ($questGateway->addQuest($quest)) echo "Был добавлен новый квест\n";//ad
+        $quests = $questGateway->getQuestsBySeason(5);
+        $questsTree = Helper::buildQuestsTree($quests);
 
-$quests = $questGateway->getQuestsBySeason(5);
-var_dump($quests);
+        $this->view('test.php', [
+            'questsTree' => $questsTree,
+        ]);
+    }
 
-$questsTree = Helper::buildQuestsTree($quests);
-
-//var_dump($questsTree);
-
-echo '<h1>Сработал testController. Ты на странице test.</h1>';
-require_once ROOT . '/app/view/test.php';
+}

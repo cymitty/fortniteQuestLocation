@@ -1,12 +1,12 @@
 <?php
 
 namespace MyFortniteBundle;
-use MyFortniteBundle\Quest;
+use MyFortniteBundle\Entity\Quest;
 // Вспомогательные static functions ( инициализировать класс не требуется )
 class Helper
 {
 
-    public static function buildQuestsTree(array &$quests)
+    public static function buildQuestsTree( &$quests )
     {
         $tree = [];
         // Сортировка по полю неделя ( возрастание )

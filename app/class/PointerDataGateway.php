@@ -8,11 +8,12 @@
 
 namespace MyFortniteBundle;
 
+use MyFortniteBundle\Entity\Pointer as Pointer;
 
 class PointerDataGateway
 {
     const FETCH_MODE = 8|1048576;
-    const CLASS_NAME = "MyFortniteBundle\Pointer";
+    const CLASS_NAME = "MyFortniteBundle\Entity\Pointer";
     private $DBH;
 
     public function __construct(\PDO $DBH)

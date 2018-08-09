@@ -33,7 +33,7 @@
 
         <ul class="quest-list">
           <header>Задания <span style="color: #fff;"><?= $i ?></span> недели</header>
-            <?php foreach ($questsTree as $item): ?>
+            <?php foreach ($data['questsTree'] as $item): ?>
                 <?php if ($item['week'] == $i): ?>
                 <div class="quest-list-item hidden">
                   <li data-id="<?= $item['id']; ?>"><?= $item['name'] ?></li>

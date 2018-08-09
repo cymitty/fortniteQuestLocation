@@ -26,7 +26,7 @@ if (questsToggle) {
 
 
 
-// Добавить координаты метки для квеста кликнув по карте
+// Отправить координаты метки для квеста в предложку кликнув по карте
 // ( преждевременно нужно выбрать квест для метки кликнув по квесту )
 map.addEventListener("click", function (e) {
   let x = e.offsetX==undefined?e.layerX:e.offsetX;
@@ -37,7 +37,7 @@ map.addEventListener("click", function (e) {
   if (questId != null)
   {
     let xhr = new XMLHttpRequest();
-    xhr.open("POST", "/newpointer", true);
+    xhr.open("POST", "/index/addPointerOffering", true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify({
       id: questId,
